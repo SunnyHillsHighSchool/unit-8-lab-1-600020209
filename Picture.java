@@ -367,8 +367,60 @@ public class Picture
   }
 
    ////////////////////// methods ///////////////////////////////////////
-
-   
+  public void mirrorTopToBottom(){
+    //Create 2d array Pixels with columns and rows of the width and height of this picture
+    Pixel[][] Pixels = this.getPixels2D();
+    //Create int variable midPoint with value of the length of Pixels divided by 2
+    int midPoint = Pixels.length/2;
+    //Declare Pixel tPixel
+    Pixel tPixel = null;
+    //Declare Pixel bPixel
+    Pixel bPixel = null;
+    //Initiate for loop: initializing int i with value 0, while i is less than midPoint, and incrementing i by one each iteration:
+    for(int i = 0; i < midPoint; i++){
+      //Initiate for loop: initializing int j with value 0, while j is less than the length of Pixels at index i, and incrementing j by one each iteration:
+      for(int j = 0; j < Pixels[i].length; j++){
+        //Set tPixel to the value of Pixels at row i and column j
+        tPixel = Pixels[i][j];
+        //Set bPixel to the value of Pixels at row length of Pixels minus 1 minus i and column j
+        bPixel = Pixels[Pixels.length - 1 - i][j];
+        //Set color of bPixel to color of tPixel
+        bPixel.setColor(tPixel.getColor());
+      //End for
+      }
+    //End for
+    }
+  }
+  public void flipVertically(){
+    //Create 2d array Pixels with columns and rows of the width and height of this picture
+    Pixel[][] Pixels = this.getPixels2D();
+    //Create int variable midPoint with value of the length of Pixels divided by 2
+    int midPoint = Pixels.length/2;
+    //Declare Pixel tPixel
+    Pixel tPixel = null;
+    //Declare Pixel bPixel
+    Pixel bPixel = null;
+    //Declare color temp
+    Color temp = null;
+    //Initiate for loop: initializing int i with value 0, while i is less than midPoint, and incrementing i by one each iteration:
+    for(int i = 0; i < midPoint; i++){
+      //Initiate for loop: initializing int j with value 0, while j is less than the length of Pixels at index i, and incrementing j by one each iteration:
+      for(int j = 0; j < Pixels[i].length; j++){
+        //Set tPixel to the value of Pixels at row i and column j
+        tPixel = Pixels[i][j];
+        //Set bPixel to the value of Pixels at row length of Pixels minus 1 minus i and column j
+        bPixel = Pixels[Pixels.length - 1 - i][j];
+        //Put color of bPixel in temp
+        temp = bPixel.getColor();
+        //Set bPixel color to tPixel color
+        bPixel.setColor(tPixel.getColor());
+        //Set tPixel color to temp
+        tPixel.setColor(temp);
+      //End for
+      }
+    //End for
+    }
+  }   
 
 
 } // this } is the end of class Picture, put all new methods before this
